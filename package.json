@@ -1,0 +1,33 @@
+{
+  "name": "com.akaal.pvcustomizer",
+  "displayName": "PvCustomizer",
+  "description": "PvCustomizer lets you customize the Unity Project View with custom folder and asset icons, adding flavor and QoL.",
+  "version": "0.0.1",
+  "unity": "2018.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-sigma/PvCustomizer.git"
+  },
+  "author": {
+    "name": "Harshdeep Singh",
+    "email": "harsh@aka.al",
+    "url": "https://github.com/h-sigma"
+  },
+  "dependencies": {},
+  "keywords": [
+    "project view",
+    "project browser",
+    "asset",
+    "folder",
+    "icons",
+    "customize"
+  ],
+  "samples": [
+    {
+      "displayName": "Asset Icon Samples",
+      "description": "Common usage examples for the Asset Icons. Delete after viewing.",
+      "path": "Samples~/Asset Icons/"
+    }
+  ]
+}

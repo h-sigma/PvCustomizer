@@ -1,0 +1,69 @@
+﻿#pvcRoot {
+    flex: 1 0 auto;
+}
+
+.title {
+    font-size: 24px;
+    color: black;
+    padding-left: 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+}
+
+.heading {
+    font-size: 18px;
+    color: black;
+    padding-left: 15px;
+    border-bottom-width: 1px;
+    border-bottom-color: gray;
+}
+
+.logo {
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 600px;
+    height: 300px;
+    opacity: 0.1;
+}
+
+.property-list {
+    flex-direction: column;
+    flex: 10 0 auto;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+.property-row {
+    flex-direction: row;
+    margin-top: 5px;
+    align-items: center;
+}
+
+.foldout {
+    flex: 1 0 auto;
+}
+
+.foldout > Toggle {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 18px;
+    color: black;
+}
+
+#tintExample {
+    height: 48px;
+    width: 48px;
+    border-width: 1px;
+    border-color: gray;
+    margin-left: 10px;
+}
+
+.listview {
+    margin-top: 10px;
+    margin-right: 5px;
+    min-height: 400px;
+    flex: 1 0 auto;
+    border-width: 1px;
+    border-color: gray;
+}

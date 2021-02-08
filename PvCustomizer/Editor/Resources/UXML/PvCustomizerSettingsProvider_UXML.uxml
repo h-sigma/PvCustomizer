@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:engine="UnityEngine.UIElements"
+        xmlns:editor="UnityEditor.UIElements"
+        xsi:noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement name="pvcRoot">
+        <Style src="../USS/pvcsettings.uss"/>
+        <engine:VisualElement class="logo"/>
+        <engine:Label class="title" text="PvCustomizer"/>
+        <!-- Property List -->
+        <engine:ScrollView class="property-list" mode="Vertical">
+            <engine:VisualElement class="property-row">
+                <engine:Slider binding-path="tintAmount" label="Selected Icon Tint Amount" style="width:60%;"
+                               low-value="0" high-value="1" name="tintAmount"/>
+                <engine:IMGUIContainer name="tintExample"/>
+            </engine:VisualElement>
+            <!-- Rules -->
+            <engine:Foldout name="rulesFoldout" class="foldout" text="Folder Rules" value="false">
+                <engine:Label text="All changes made in this interface are permanent and can't be un-done."/>
+                <engine:ListView name="rulesList" binding-path="rules" class="listview" item-height="170"/>
+            </engine:Foldout>
+        </engine:ScrollView>
+    </engine:VisualElement>
+</engine:UXML>

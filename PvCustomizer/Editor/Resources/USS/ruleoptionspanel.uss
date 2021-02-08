@@ -1,0 +1,151 @@
+﻿
+.panel {
+    flex: 1 0 auto;
+}
+
+.panel Label {
+    min-width: 0;
+}
+
+.header {
+    flex: 0 0 auto;
+    flex-direction: column;
+    border-bottom-width: 1px;
+    border-color: black;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.header__row {
+    flex: 1 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: stretch;
+    align-items: flex-start;
+}
+
+#tag-holder {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: stretch;
+    align-items: center;
+}
+
+#tag_Modified {
+    border-radius: 4px;
+    -unity-text-align: middle-center;
+    border-width: 1px;
+    border-color: #f3eb29;
+    background-color: #f8f09a;
+}
+
+#tag_New {
+    border-radius: 4px;
+    -unity-text-align: middle-center;
+    border-width: 1px;
+    border-color: #4f7e5a;
+    background-color: #a1f7b5;
+}
+
+.header__ruleType {
+    width: 25%;
+}
+
+.header__ruleString {
+    width: 70%;
+}
+
+.header__priority {
+    flex: 1 0 auto;
+}
+
+.header__enabled {
+}
+
+.config {
+    flex: 1 0 auto;
+}
+
+.config__properties {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+
+.config__display {
+    flex-direction: column;
+    padding-top: 10px;
+    width: 100px;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#largeIcon__display {
+    width: 64px;
+    height: 64px;
+    border-width: 1px;
+    border-color: gray;
+}
+
+#smallIcon__display {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    border-color: black;
+}
+
+#textBackground__display {
+    margin-top: 4px;
+    width: 64px;
+    height: 10px;
+    font-size: 9px;
+    border-width: 1px;
+    border-color: gray;
+    -unity-text-align: middle-center;
+}
+
+.prop-field {
+    max-width: 200px;
+    min-width: 40px;
+}
+
+.prop-field > Label {
+    width: 50%;
+}
+
+.icon-button {
+    width: 20px;
+    height: 20px;
+}
+
+#btn_Settings {
+    background-image: resource("Settings");
+}
+
+#btn_Delete {
+    background-image: resource("TreeEditor.Trash");
+}
+
+#btn_Previous {
+    background-image: resource("Animation.PrevKey");
+}
+
+#btn_Next {
+    background-image: resource("Animation.NextKey");
+}
+
+#btn_NewRule {
+    background-image: resource("Toolbar Plus");
+}
+
+.footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 auto;
+}

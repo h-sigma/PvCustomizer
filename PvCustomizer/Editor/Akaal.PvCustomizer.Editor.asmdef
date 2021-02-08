@@ -1,0 +1,19 @@
+{
+    "name": "Akaal.PvCustomizer.Editor",
+    "references": [
+        "GUID:a6210b690f5aaf443a3c3daf29e26d06"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        ""
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

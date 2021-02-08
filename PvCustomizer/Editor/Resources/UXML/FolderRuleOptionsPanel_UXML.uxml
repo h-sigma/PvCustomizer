@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:engine="UnityEngine.UIElements"
+        xmlns:editor="UnityEditor.UIElements"
+        xmlns:PvC="Akaal.Editor.EditorGUI"
+        xsi:noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <PvC:FolderRuleOptionsPanel class="panel">
+        <Style src="../USS/ruleoptionspanel.uss"/>
+        <!-- RuleType / RuleString combo -->
+        <engine:VisualElement class="header">
+            <engine:VisualElement class="header__row">
+                <editor:EnumField name="ruleType" binding-path="rule.ruleType"
+                                  type="Akaal.Editor.PvRuleType, Akaal.PvCustomizer.Editor"
+                                  class="header__ruleType"/>
+                <engine:TextField binding-path="rule.ruleString" name="ruleString" label="" class="header__ruleString"/>
+            </engine:VisualElement>
+            <engine:VisualElement class="header__row">
+                <engine:Toggle binding-path="rule.enabled" label="Enabled" class="header__enabled"/>
+                <editor:IntegerField binding-path="rule.priority" label="Priority" class="header__enabled"/>
+                <engine:VisualElement name="tag-holder">
+                    <engine:Label name="tag_Modified" text="Modified"/>
+                    <engine:Label name="tag_New" text="New"/>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        `
+        <!-- Sprite Config -->
+        <engine:VisualElement style="flex-direction:row;" class="config">
+            <!-- Properties -->
+            <engine:VisualElement style="flex-direction:column;" class="config__properties">
+                <engine:Toggle class="prop-field" binding-path="rule.eraseDefaultFolder" label="Erase Default"/>
+                <editor:ObjectField name="largeIcon__field" class="prop-field" binding-path="rule.largeIcon.sprite"
+                                    allow-scene-objects="false" label="Large Icon"/>
+                <editor:ObjectField name="smallIcon__field" class="prop-field" binding-path="rule.smallIcon.sprite"
+                                    allow-scene-objects="false" label="Small Icon"/>
+                <editor:ObjectField name="textBackground__field" class="prop-field"
+                                    binding-path="rule.textBackground.sprite"
+                                    allow-scene-objects="false"
+                                    label="Background"/>
+                <editor:ColorField binding-path="rule.textColor" class="prop-field" name="textColor"
+                                   show-eye-dropper="true" hdr="false" label="Text Color"/>
+            </engine:VisualElement>
+            <!-- Live Texture Draws -->
+            <engine:VisualElement
+                    class="config__display">
+                <engine:VisualElement name="largeIcon__display">
+                    <engine:VisualElement name="smallIcon__display"/>
+                </engine:VisualElement>
+                <engine:VisualElement name="textBackground__display">
+                    <engine:Label name="sampleText" text="Sample Text" style="align-self:center"/>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <!-- Buttons and Options -->
+        <engine:VisualElement class="footer">
+            <!-- Options -->
+            <engine:VisualElement class="options" style="flex-direction:row">
+                <engine:Button text="" class="icon-button" name="btn_Delete"/>
+                <engine:Button text="" class="icon-button" name="btn_Settings"/>
+            </engine:VisualElement>
+            <!-- Buttons -->
+            <engine:VisualElement class="buttons" style="flex-direction:row">
+                <engine:Button name="btn_Apply" text="Apply"/>
+                <engine:Button name="btn_Cancel" text="Cancel"/>
+                <engine:Button name="btn_Reset" text="Reset Changes"/>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </PvC:FolderRuleOptionsPanel>
+
+</engine:UXML>

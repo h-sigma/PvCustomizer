@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e91c75831f4588b5d9647eddd9028d, type: 3}
+  m_Name: randoms texmat grid
+  m_EditorClassIdentifier: 
+  texture1: {fileID: 2800000, guid: 30a8fd2b2dee8e54090ff5b729909db2, type: 3}
+  material1: {fileID: 2100000, guid: 26024e28760fa894aaa59df6df3b45e8, type: 2}
+  texture2: {fileID: 2800000, guid: 95c6dd853d1e9eb438b57dd882c19b9b, type: 3}
+  material2: {fileID: 2100000, guid: 1ca360c3e5a796e49a10861af4a248a7, type: 2}
+  texture3: {fileID: 2800000, guid: 42b60b43b6274bf408a321742cbc43ee, type: 3}
+  material3: {fileID: 2100000, guid: bcb8c7fbf04ff754e8f04c14626b0981, type: 2}
+  texture4: {fileID: 2800000, guid: 31e23727577b7b14c8e802f43d51f496, type: 3}
+  material4: {fileID: 2100000, guid: 76e0670d694e3104abcc51e9934bd806, type: 2}
