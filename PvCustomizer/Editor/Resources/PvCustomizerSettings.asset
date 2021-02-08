@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e1a37ffc22495c9c7faeafe5e2bc6b, type: 3}
   m_Name: PvCustomizerSettings
   m_EditorClassIdentifier: 
-  tintAmount: 0.6451613
+  tintAmount: 0.5989305
+  drawFolderIcons: 1
+  drawAssetIcons: 1
   rules:
   - enabled: 0
     priority: 0
     ruleType: 2
     ruleString: .pdf
+    eraseDefaultFolder: 1
     smallIcon:
       sprite: {fileID: 21300000, guid: a5c8755b81b38dc479d8f9082fab5ef7, type: 3}
       color: {r: 0, g: 0, b: 0, a: 0}
@@ -35,6 +38,7 @@ MonoBehaviour:
     priority: 0
     ruleType: 0
     ruleString: Scripts
+    eraseDefaultFolder: 1
     smallIcon:
       sprite: {fileID: 21300000, guid: 1e341a023b0c045409531e51762c430a, type: 3}
       color: {r: 0, g: 0, b: 0, a: 0}
@@ -48,10 +52,11 @@ MonoBehaviour:
       color: {r: 0, g: 0, b: 0, a: 0}
       preconfigId: 0
     textColor: {r: 0, g: 0, b: 0, a: 0}
-  - enabled: 0
+  - enabled: 1
     priority: 0
     ruleType: 0
     ruleString: Editor
+    eraseDefaultFolder: 0
     smallIcon:
       sprite: {fileID: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
@@ -69,6 +74,7 @@ MonoBehaviour:
     priority: 0
     ruleType: 0
     ruleString: Resources
+    eraseDefaultFolder: 1
     smallIcon:
       sprite: {fileID: 21300000, guid: ef0eca0e8c564224ab44e5a8b5b989db, type: 3}
       color: {r: 0, g: 0, b: 0, a: 0}

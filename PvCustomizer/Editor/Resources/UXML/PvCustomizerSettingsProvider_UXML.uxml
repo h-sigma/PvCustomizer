@@ -16,6 +16,8 @@
                                low-value="0" high-value="1" name="tintAmount"/>
                 <engine:IMGUIContainer name="tintExample"/>
             </engine:VisualElement>
+            <engine:Toggle binding-path="drawFolderIcons" label="Draw Folder Icons" class="property-row"/>
+            <engine:Toggle binding-path="drawAssetIcons" label="Draw Asset Icons" class="property-row"/>
             <!-- Rules -->
             <engine:Foldout name="rulesFoldout" class="foldout" text="Folder Rules" value="false">
                 <engine:Label text="All changes made in this interface are permanent and can't be un-done."/>

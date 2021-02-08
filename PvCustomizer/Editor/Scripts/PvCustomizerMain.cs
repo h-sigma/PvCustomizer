@@ -89,12 +89,12 @@ namespace Akaal.Editor
 
             PvCustomizerSettings settings = PvCustomizerSettings.GetOrCreateSettings();
 
-            if (AssetDatabase.IsValidFolder(path))
+            if (AssetDatabase.IsValidFolder(path) && settings.DrawFolderIcons)
             {
                 if (settings.TryMatchAgainstRules(path, out var pattern))
                     DrawFolderIcon(path, selectionrect, pattern, selected);
             }
-            else if (asset != null)
+            else if (asset != null && settings.DrawAssetIcons)
             {
                 //if the class has an attribute defined, draw it
                 if (PvIconAttributeCache.TryGetClassAttribute(asset.GetType(), out var attrs))
@@ -147,6 +147,7 @@ namespace Akaal.Editor
             {
                 PvCustomizerGUI.DrawBackground(iconRect);
             }
+
             if (sizeType == IconSizeType.Small && rule.smallIcon.sprite != null)
             {
                 iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, true);

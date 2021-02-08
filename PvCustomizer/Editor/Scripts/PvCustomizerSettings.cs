@@ -7,28 +7,46 @@ namespace Akaal.Editor
 {
     public class PvCustomizerSettings : ScriptableObject, ISerializationCallbackReceiver
     {
+        #region Constants
+
         public const string PackageName = "com.akaal.pvcustomizer";
 
         public const string k_MyCustomSettingsPath =
             "Packages/" + PackageName + "/PvCustomizer/Editor/Resources/PvCustomizerSettings.asset";
 
-        #region Definitions
-
         #endregion
 
+        #region Serializable
+
         [SerializeField]
-        private float tintAmount;
+        private float tintAmount = 0.5f;
+
+        [SerializeField]
+        private bool drawFolderIcons = true;
+
+        [SerializeField]
+        private bool drawAssetIcons = true;
 
         [SerializeField]
         private List<PvRuleItem> rules = new List<PvRuleItem>();
 
+        #endregion
+
         private        Dictionary<string, PvRuleItem> _rulesDict = new Dictionary<string, PvRuleItem>();
         private static PvCustomizerSettings           _settings;
-        public         List<PvRuleItem>               Rules => rules;
 
+        #region Public Properties
         public float TintAmount => tintAmount;
 
+        public bool DrawFolderIcons => drawFolderIcons;
+
+        public bool DrawAssetIcons => drawAssetIcons;
+
+        public List<PvRuleItem> Rules => rules;
+        
         public Dictionary<string, PvRuleItem> RulesDict => _rulesDict;
+        
+        #endregion
 
         #region Implementation of ISerializationCallbackReceiver
 
