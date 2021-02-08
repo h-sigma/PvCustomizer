@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using Akaal;
+using UnityEngine;
 
-namespace PvCustomizer.Samples
+namespace PvCustomizer.Editor.Samples
 {
-    [CreateAssetMenu(menuName = "Pv/Samples/GridSample", order = 0)]
     public class GridSample : ScriptableObject
     {
         [PvIcon(material: nameof(material1), grid:"2/2:0")]

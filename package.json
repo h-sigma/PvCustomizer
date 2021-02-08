@@ -22,12 +22,5 @@
     "folder",
     "icons",
     "customize"
-  ],
-  "samples": [
-    {
-      "displayName": "Asset Icon Samples",
-      "description": "Common usage examples for the Asset Icons. Delete after viewing.",
-      "path": "Samples~/Asset Icons/"
-    }
   ]
 }

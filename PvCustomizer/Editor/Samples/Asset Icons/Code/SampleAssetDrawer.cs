@@ -1,8 +1,8 @@
 ﻿using System;
-using PvCustomizer.Samples;
+using Akaal.Editor;
 using UnityEngine;
 
-namespace PvCustomizer.Editor.DefaultDrawers
+namespace PvCustomizer.Editor.Samples
 {
     public class SampleAssetDrawer : IDrawer
     {
