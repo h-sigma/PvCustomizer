@@ -17,7 +17,7 @@ namespace Akaal.Editor
         public static readonly Color32 ICON_SELECTED_BLUE_BACKGROUND = new Color32(61, 128, 223, 255);
 
         private static void DrawTextureDirect(Rect rect, Texture2D texture, Material material, PvScaleMode? scaleMode,
-            Color?                                 tint = null)
+            Color? tint = null)
         {
             material.SetFloat(s_TintAmount, PvCustomizerSettings.GetOrCreateSettings().TintAmount);
             material.SetColor(s_Tint, tint ?? Color.white);
@@ -59,7 +59,7 @@ namespace Akaal.Editor
         /// <param name="style">The compiled style for the icon.</param>
         /// <param name="material">Custom material used to draw the texture. 'Sprites/Default' by default.</param>
         public static void DrawTexture(Rect rect, Texture2D texture, Material material = null, Color? tint = null,
-            PvScaleMode?                    scaleMode = null)
+            PvScaleMode? scaleMode = null)
         {
             if (texture == null) return;
             material = GetMaterialForUse(material);
@@ -100,8 +100,8 @@ namespace Akaal.Editor
         /// <param name="textureCoords">The pixel rect of the texture to be drawn.</param>
         /// <param name="style">The compiled style for the icon.</param>
         /// <param name="material">Custom material used to draw the texture. 'Sprites/Default' by default.</param>
-        public static void DrawTexWithCoords(Rect rect,            Texture2D texture,     Rect         textureCoords,
-            Material                              material = null, Color?    tint = null, PvScaleMode? scaleMode = null)
+        public static void DrawTexWithCoords(Rect rect, Texture2D texture, Rect textureCoords,
+            Material material = null, Color? tint = null, PvScaleMode? scaleMode = null)
         {
             material = GetMaterialForUse(material);
             SetTiling(material, textureCoords, texture.Size());
@@ -118,8 +118,8 @@ namespace Akaal.Editor
         /// <param name="uvCoords">The UV rect of the texture to be drawn.</param>
         /// <param name="style">The compiled style for the icon.</param>
         /// <param name="material">Custom material used to draw the texture. 'Sprites/Default' by default.</param>
-        public static void DrawTexWithUVCoords(Rect rect,            Texture2D texture,     Rect         uvCoords,
-            Material                                material = null, Color?  tint = null, PvScaleMode? scaleMode = null)
+        public static void DrawTexWithUVCoords(Rect rect, Texture2D texture, Rect uvCoords,
+            Material material = null, Color? tint = null, PvScaleMode? scaleMode = null)
         {
             material = GetMaterialForUse(material);
             SetTiling(material, uvCoords);
@@ -130,8 +130,8 @@ namespace Akaal.Editor
         private static GUIContent content = new GUIContent();
 
         public static void DrawTextDirect(Rect rect, string text, Color? color = null,
-            UnityEngine.FontStyle                          fontStyle  = UnityEngine.FontStyle.Normal,
-            PvAnchor                             textAnchor = PvAnchor.MiddleLeft)
+            UnityEngine.FontStyle fontStyle = UnityEngine.FontStyle.Normal,
+            PvAnchor textAnchor = PvAnchor.MiddleLeft)
         {
             var tempCol       = GUI.skin.label.normal.textColor;
             var tempStyle     = GUI.skin.label.fontStyle;
@@ -170,8 +170,8 @@ namespace Akaal.Editor
         /// <param name="text">The text to be drawn.</param>
         /// <param name="color">Optional color to draw the text in.</param>
         /// <param name="useColor">Whether to use the color.</param>
-        public static void DrawText(Rect rect,            string    text, out Rect occupiedText,
-            Color?                       color = default, UnityEngine.FontStyle fontStyle = UnityEngine.FontStyle.Normal)
+        public static void DrawText(Rect rect, string text, out Rect occupiedText,
+            Color? color = default, UnityEngine.FontStyle fontStyle = UnityEngine.FontStyle.Normal)
         {
             var tempCol   = GUI.skin.label.normal.textColor;
             var tempStyle = GUI.skin.label.fontStyle;

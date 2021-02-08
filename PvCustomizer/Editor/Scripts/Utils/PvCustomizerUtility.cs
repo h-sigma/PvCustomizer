@@ -13,23 +13,34 @@ namespace Akaal.Editor.Utils
         /// <summary>
         /// Maps the rect of the whole project item to the area meant for the graphic.
         /// </summary>
-        public static Rect ItemRectToIconRect(Rect itemRect, bool square = false)
+        public static Rect ItemRectToIconRect(Rect itemRect, bool isTreeView)
         {
             Rect iconRect = new Rect(itemRect);
             if (itemRect.width > itemRect.height)
             {
-                if (square)
+                iconRect.width = itemRect.height;
+                if (!isTreeView) iconRect.x += itemRect.height * 0.25f;
+                /*if (isTreeView) 
                 {
                     iconRect.width = itemRect.height;
                 }
                 else
                 {
                     iconRect.width = itemRect.height * 4.5f / 4f;
-                }
+                }*/
             }
             else iconRect.height = itemRect.width;
 
             return iconRect;
+        }
+
+        /// <summary>
+        /// Taken from rainbow folders github.
+        /// https://github.com/PhannGor/unity3d-rainbow-folders/blob/f956bf8a047b59cffd82feb86f9817426a73da73/Assets/Plugins/RainbowFolders/Editor/Scripts/RainbowFoldersBrowserIcons.cs#L240
+        /// </summary>
+        public static bool IsTreeView(Rect rect)
+        {
+            return (rect.x - 16) % 14 == 0;
         }
 
         public static Rect ItemRectToTextRect(Rect itemRect)
@@ -54,6 +65,7 @@ namespace Akaal.Editor.Utils
         /// </summary>
         public static IconSizeType GetSizeType(Rect itemRect)
         {
+            if (IsTreeView(itemRect)) return IconSizeType.TreeView;
             if (itemRect.width > itemRect.height) return IconSizeType.Small;
             else return IconSizeType.Large;
         }

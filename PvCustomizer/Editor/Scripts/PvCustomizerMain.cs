@@ -80,11 +80,12 @@ namespace Akaal.Editor
                         }
                         */
 
+            //determine whether given asset is currently selected
+            bool selected = Array.IndexOf(Selection.assetGUIDs, guid) > -1;
+
             string path  = AssetDatabase.GUIDToAssetPath(guid);
             Object asset = AssetDatabase.LoadAssetAtPath(path, typeof(Object));
 
-            //determine whether given asset is currently selected
-            bool selected = asset != null && Array.IndexOf(Selection.objects, asset) > -1;
             //PvCustomizerGUI.InvertedColors = selected;
 
             PvCustomizerSettings settings = PvCustomizerSettings.GetOrCreateSettings();
@@ -138,17 +139,17 @@ namespace Akaal.Editor
 
         private void DrawFolderIcon(string path, Rect selectionRect, PvRuleItem rule, bool selected)
         {
-            string       name     = Path.GetFileName(path);
-            Rect         iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect);
+            string name = Path.GetFileName(path);
             IconSizeType sizeType = PvCustomizerUtility.GetSizeType(selectionRect);
-            Color        tint     = selected ? (Color) PvCustomizerGUI.ICON_SELECTED_TINT : Color.white;
+            Rect iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, sizeType == IconSizeType.TreeView);
+            Color tint = selected ? (Color) PvCustomizerGUI.ICON_SELECTED_TINT : Color.white;
 
             if (rule.eraseDefaultFolder)
             {
                 PvCustomizerGUI.DrawBackground(iconRect);
             }
 
-            if (sizeType == IconSizeType.Small && rule.smallIcon.sprite != null)
+            if (sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView && rule.smallIcon.sprite != null)
             {
                 iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, true);
                 PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint);
@@ -167,7 +168,7 @@ namespace Akaal.Editor
                 using (new TempFontSize(10))
                 {
                     PvCustomizerGUI.DrawTextDirect(textRect, name,
-                        textAnchor: sizeType == IconSizeType.Small ? PvAnchor.MiddleLeft : PvAnchor.MiddleCenter,
+                        textAnchor: sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView ? PvAnchor.MiddleLeft : PvAnchor.MiddleCenter,
                         color: rule.textColor);
                 }
             }
@@ -183,7 +184,8 @@ namespace Akaal.Editor
             var triplets = PvIconAttributeCache.GetAttributeTriplets(asset.GetType());
             if (triplets.Exists(t => t.Attr.Display != "false" && !t.Attr.DontEraseDefault))
             {
-                Rect iconRect = PvCustomizerUtility.ItemRectToIconRect(fullRect);
+                IconSizeType sizeType = PvCustomizerUtility.GetSizeType(fullRect);
+                Rect iconRect = PvCustomizerUtility.ItemRectToIconRect(fullRect, sizeType == IconSizeType.TreeView);
                 PvCustomizerGUI.DrawBackground(iconRect);
             }
 
@@ -230,16 +232,18 @@ namespace Akaal.Editor
 
         private IconStyle CompileStyle(object asset, PvIconAttribute attr, Rect fullRect)
         {
-            Rect      iconRect = PvCustomizerUtility.ItemRectToIconRect(fullRect);
-            IconStyle style    = new IconStyle();
-            //----------direct assignments
-            style.IsSet        = true;
-            style.Tint         = attr.Tint;
-            style.CustomValues = attr.CustomData;
-            style.FontStyle    = attr.FontStyle;
-            style.SizeType     = PvCustomizerUtility.GetSizeType(iconRect);
-            style.MaxSize      = attr.MaxSize;
-            style.ScaleMode    = attr.ScaleMode;
+            IconSizeType sizeType = PvCustomizerUtility.GetSizeType(fullRect);
+            Rect         iconRect = PvCustomizerUtility.ItemRectToIconRect(fullRect, sizeType == IconSizeType.TreeView);
+            IconStyle style = new IconStyle
+            {
+                IsSet        = true,
+                Tint         = attr.Tint,
+                CustomValues = attr.CustomData,
+                FontStyle    = attr.FontStyle,
+                SizeType     = PvCustomizerUtility.GetSizeType(iconRect),
+                MaxSize      = attr.MaxSize,
+                ScaleMode    = attr.ScaleMode
+            };
 
             //----------complex assignments
 

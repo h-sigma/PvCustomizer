@@ -3,7 +3,8 @@
     public enum IconSizeType
     {
         Small,
-        Large
+        Large,
+        TreeView
     }
 
     public enum PvAnchor
