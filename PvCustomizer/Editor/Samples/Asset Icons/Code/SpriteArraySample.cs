@@ -7,5 +7,8 @@ namespace PvCustomizer.Editor.Samples
     {
         [PvIcon(fontStyle:PvFontStyle.Bold, textAnchor: PvAnchor.MiddleCenter)]
         public Sprite[] sprites;
+
+        [PvIcon(layer: 1)]
+        public Sprite sprite;
     }
 }
