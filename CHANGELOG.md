@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PvIcon Attribute for regular serializable classes.
 - String expression conditions for displaying of asset icons.
 
+## [0.0.4] - 2021-02-09
+### Fixes
+- Fixed issue with sprites not scaling correctly when part of a large texture.
+
+### Added
+- Sprites with scale mode set to StretchToFit (default scaleMode) now work correctly.
+
 ## [0.0.3] - 2021-02-09
 ### Fixes
 - Fixed issue with large icon being categorized as tree view icons.

@@ -87,10 +87,11 @@ namespace Akaal.Editor
         /// <param name="sprite">The sprite to be drawn.</param>
         /// <param name="style">The compiled style for the icon.</param>
         /// <param name="material">The Material used to draw the sprite. Leave null to use default.</param>
-        public static void DrawSprite(Rect rect, Sprite sprite, Material material = null, Color? tint = null, PvScaleMode? scaleMode = null)
+        public static void DrawSprite(Rect rect, Sprite sprite, Material material = null, Color? tint = null,
+            PvScaleMode? scaleMode = null)
         {
             if (sprite == null) return;
-            Rect  texRect    = sprite.textureRect;
+            Rect texRect = sprite.textureRect;
 
             if (scaleMode == PvScaleMode.ScaleToFit)
             {
@@ -108,9 +109,10 @@ namespace Akaal.Editor
                     texRect.y      -= (heightToAdd - texRect.height) / 2f;
                     texRect.height =  heightToAdd;
                 }
+
             }
 
-            DrawTexWithCoords(rect, sprite.texture, texRect, material, tint: tint);
+            DrawTexWithCoords(rect, sprite.texture, texRect, material, tint: tint, scaleMode: scaleMode);
         }
 
         /// <summary>
