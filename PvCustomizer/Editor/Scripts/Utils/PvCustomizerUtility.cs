@@ -65,8 +65,10 @@ namespace Akaal.Editor.Utils
         /// </summary>
         public static IconSizeType GetSizeType(Rect itemRect)
         {
-            if (IsTreeView(itemRect)) return IconSizeType.TreeView;
-            if (itemRect.width > itemRect.height) return IconSizeType.Small;
+            if (itemRect.width > itemRect.height)
+            {
+                return IsTreeView(itemRect) ? IconSizeType.TreeView : IconSizeType.Small;
+            }
             else return IconSizeType.Large;
         }
 
