@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Collab/VCS overlay support.
 - PvIcon Attribute for regular serializable classes.
 - String expression conditions for displaying of asset icons.
+- Various SDF shapes for icons.
 
 ## [0.0.4] - 2021-02-09
 ### Fixes
