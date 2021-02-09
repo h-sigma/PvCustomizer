@@ -152,11 +152,11 @@ namespace Akaal.Editor
             if (sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView && rule.smallIcon.sprite != null)
             {
                 iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, true);
-                PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint);
+                PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint, scaleMode: PvScaleMode.ScaleToFit);
             }
             else if (sizeType == IconSizeType.Large && rule.largeIcon.sprite != null)
             {
-                PvCustomizerGUI.DrawSprite(iconRect, rule.largeIcon.sprite, tint: tint);
+                PvCustomizerGUI.DrawSprite(iconRect, rule.largeIcon.sprite, tint: tint, scaleMode: PvScaleMode.ScaleToFit);
             }
 
             if (rule.textBackground.sprite != null)
@@ -164,7 +164,7 @@ namespace Akaal.Editor
                 Rect textRect = PvCustomizerUtility.ItemRectToTextRect(selectionRect);
                 textRect.height++;
                 PvCustomizerGUI.DrawBackground(textRect);
-                PvCustomizerGUI.DrawSprite(textRect, rule.textBackground.sprite, tint: tint);
+                PvCustomizerGUI.DrawSprite(textRect, rule.textBackground.sprite, tint: tint, scaleMode:PvScaleMode.StretchToFill);
                 using (new TempFontSize(10))
                 {
                     PvCustomizerGUI.DrawTextDirect(textRect, name,
