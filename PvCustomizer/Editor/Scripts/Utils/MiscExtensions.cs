@@ -113,7 +113,8 @@ namespace Akaal.Editor.Utils
             return obj;
         }
 
-        public static Vector2 Size(this Texture2D tex) => new Vector2(tex.width, tex.height);
+        public static Vector2 Size(this Texture2D tex) =>
+            tex == null ? Vector2.zero : new Vector2(tex.width, tex.height);
 
         /// <summary>
         /// Calculates aspect ratio of a Rect as width divided by height.

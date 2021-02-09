@@ -19,6 +19,7 @@ namespace Akaal.Editor
         private static void DrawTextureDirect(Rect rect, Texture2D texture, Material material, PvScaleMode? scaleMode,
             Color? tint = null)
         {
+            if (texture == null) return;
             material.SetFloat(s_TintAmount, PvCustomizerSettings.GetOrCreateSettings().TintAmount);
             material.SetColor(s_Tint, tint ?? Color.white);
             UnityEditor.EditorGUI.DrawPreviewTexture(rect, texture, material,
@@ -88,7 +89,7 @@ namespace Akaal.Editor
         /// <param name="material">The Material used to draw the sprite. Leave null to use default.</param>
         public static void DrawSprite(Rect rect, Sprite sprite, Material material = null, Color? tint = null)
         {
-            if (sprite.texture == null) return;
+            if (sprite == null) return;
             DrawTexWithCoords(rect, sprite.texture, sprite.textureRect, material, tint: tint);
         }
 
