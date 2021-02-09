@@ -239,7 +239,7 @@ namespace Akaal.Editor
             Vector2 inverseTexSize = new Vector2(1 / texSize.x, 1 / texSize.y);
             Vector2 uvScale        = texCoords.size * inverseTexSize;
             SetTiling(material,
-                new Rect(texCoords.position * inverseTexSize, new Vector2(1 / uvScale.x, 1 / uvScale.y)));
+                new Rect(texCoords.position * inverseTexSize, new Vector2(uvScale.x, uvScale.y)));
         }
 
         private static void ResetTiling(Material material)
