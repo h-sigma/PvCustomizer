@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ namespace Akaal.Editor
 
         public const string PackageName = "com.akaal.pvcustomizer";
 
-        public const string k_MyCustomSettingsPath =
-            "Packages/" + PackageName + "/PvCustomizer/Editor/Resources/PvCustomizerSettings.asset";
+        public const  string k_MyCustomSettingsPath = ResourcesFolder + "PvCustomizerSettings.asset";
+        private const string ResourcesFolder        = "Assets/Plugins/PvCustomizer/Editor/Resources/";
 
         #endregion
 
@@ -36,6 +37,7 @@ namespace Akaal.Editor
         private static PvCustomizerSettings           _settings;
 
         #region Public Properties
+
         public float TintAmount => tintAmount;
 
         public bool DrawFolderIcons => drawFolderIcons;
@@ -43,9 +45,9 @@ namespace Akaal.Editor
         public bool DrawAssetIcons => drawAssetIcons;
 
         public List<PvRuleItem> Rules => rules;
-        
+
         public Dictionary<string, PvRuleItem> RulesDict => _rulesDict;
-        
+
         #endregion
 
         #region Implementation of ISerializationCallbackReceiver
@@ -87,6 +89,7 @@ namespace Akaal.Editor
                 if (_settings == null)
                 {
                     _settings = CreateInstance<PvCustomizerSettings>();
+                    if (!Directory.Exists(ResourcesFolder)) Directory.CreateDirectory(ResourcesFolder);
                     AssetDatabase.CreateAsset(_settings, k_MyCustomSettingsPath);
                     AssetDatabase.SaveAssets();
                 }
