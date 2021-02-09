@@ -38,6 +38,8 @@ namespace Akaal
         /// <param name="display"></param>
         /// <param name="layer"></param>
         /// <param name="fontStyle"></param>
+        /// <param name="dontEraseDefault"></param>
+        /// <param name="grid"></param>
         /// <param name="customValues">Array of custom values to be passed to your custom drawers..</param>
         public PvIconAttribute(string width = "100%", string height = "100%", string x = "0", string y = "0",
             PvScaleMode scaleMode = PvScaleMode.ScaleToFit,

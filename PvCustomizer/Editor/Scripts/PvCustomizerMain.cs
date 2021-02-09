@@ -168,7 +168,9 @@ namespace Akaal.Editor
                 using (new TempFontSize(10))
                 {
                     PvCustomizerGUI.DrawTextDirect(textRect, name,
-                        textAnchor: sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView ? PvAnchor.MiddleLeft : PvAnchor.MiddleCenter,
+                        textAnchor: sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView
+                            ? PvAnchor.MiddleLeft
+                            : PvAnchor.MiddleCenter,
                         color: rule.textColor);
                 }
             }
@@ -181,10 +183,10 @@ namespace Akaal.Editor
         private bool FindAndDrawAttributes(Object asset, Rect fullRect, bool selected)
         {
             //get all relevant attributes and member info on which they're declared
-            var triplets = PvIconAttributeCache.GetAttributeTriplets(asset.GetType());
-            if (triplets.Exists(t => t.Attr.Display != "false" && !t.Attr.DontEraseDefault))
+            var          triplets = PvIconAttributeCache.GetAttributeTriplets(asset.GetType());
+            IconSizeType sizeType = PvCustomizerUtility.GetSizeType(fullRect);
+            if (triplets.Exists(t => CanDisplay(t.Attr.Display, sizeType) && !t.Attr.DontEraseDefault))
             {
-                IconSizeType sizeType = PvCustomizerUtility.GetSizeType(fullRect);
                 Rect iconRect = PvCustomizerUtility.ItemRectToIconRect(fullRect, sizeType == IconSizeType.TreeView);
                 PvCustomizerGUI.DrawBackground(iconRect);
             }
@@ -203,8 +205,8 @@ namespace Akaal.Editor
         private bool TryDrawFromValue(object asset, object value, Rect fullRect,
             PvIconAttribute attr, bool selected)
         {
-            if (attr.Display == "false") return false;
-            if (value        == null) return false;
+            if (!CanDisplay(attr.Display, PvCustomizerUtility.GetSizeType(fullRect))) return false;
+            if (value == null) return false;
             if (!TryGetDrawer(value.GetType(), out var drawer)) return false;
 
             //compile the style from attribute into something we can pass along to drawer
@@ -227,6 +229,16 @@ namespace Akaal.Editor
                 //get proper drawer for this member's value type
                 d = Registry.GetIconDrawer(valueType);
                 return d != null;
+            }
+        }
+
+        private static bool CanDisplay(string display, IconSizeType sizeType)
+        {
+            switch (display)
+            {
+                case "small": return sizeType == IconSizeType.Small;
+                case "large": return sizeType == IconSizeType.Large;
+                default:      return true;
             }
         }
 
