@@ -23,7 +23,7 @@ namespace Akaal.Editor
             material.SetFloat(s_TintAmount, PvCustomizerSettings.GetOrCreateSettings().TintAmount);
             material.SetColor(s_Tint, tint ?? Color.white);
             UnityEditor.EditorGUI.DrawPreviewTexture(rect, texture, material,
-                (scaleMode ?? PvScaleMode.ScaleAndCrop).UnityScaleMode());
+                (scaleMode ?? PvScaleMode.ScaleToFit).UnityScaleMode());
         }
 
         #endregion
@@ -87,10 +87,30 @@ namespace Akaal.Editor
         /// <param name="sprite">The sprite to be drawn.</param>
         /// <param name="style">The compiled style for the icon.</param>
         /// <param name="material">The Material used to draw the sprite. Leave null to use default.</param>
-        public static void DrawSprite(Rect rect, Sprite sprite, Material material = null, Color? tint = null)
+        public static void DrawSprite(Rect rect, Sprite sprite, Material material = null, Color? tint = null, PvScaleMode? scaleMode = null)
         {
             if (sprite == null) return;
-            DrawTexWithCoords(rect, sprite.texture, sprite.textureRect, material, tint: tint);
+            Rect  texRect    = sprite.textureRect;
+
+            if (scaleMode == PvScaleMode.ScaleToFit)
+            {
+                float drawAspect = rect.Aspect();
+                float texAspect  = texRect.Aspect();
+                if (drawAspect > texAspect) //drawer rect is wider than tex rect
+                {
+                    float widthToAdd = texRect.height * drawAspect;
+                    texRect.x     -= (widthToAdd - texRect.width) / 2f;
+                    texRect.width =  widthToAdd;
+                }
+                else
+                {
+                    float heightToAdd = texRect.width / drawAspect;
+                    texRect.y      -= (heightToAdd - texRect.height) / 2f;
+                    texRect.height =  heightToAdd;
+                }
+            }
+
+            DrawTexWithCoords(rect, sprite.texture, texRect, material, tint: tint);
         }
 
         /// <summary>
