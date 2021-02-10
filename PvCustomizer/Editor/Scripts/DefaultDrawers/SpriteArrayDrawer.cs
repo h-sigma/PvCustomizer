@@ -39,7 +39,7 @@ namespace Akaal.Editor.DefaultDrawers
                         y      = drawRect.y + height * (i / gridSize),
                         width  = width,
                         height = height
-                    }, sprite, style.Material, style.Tint);
+                    }, sprite, style.Material, style.Tint, style.ScaleMode);
                 }
 
                 if (style.SizeType == IconSizeType.Large)

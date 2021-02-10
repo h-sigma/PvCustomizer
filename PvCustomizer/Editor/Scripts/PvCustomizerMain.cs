@@ -149,31 +149,43 @@ namespace Akaal.Editor
                 PvCustomizerGUI.DrawBackground(iconRect);
             }
 
+            #region Icon Drawing
+
             if (sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView && rule.smallIcon.sprite != null)
             {
                 iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, true);
-                PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint, scaleMode: PvScaleMode.ScaleToFit);
+                PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint,
+                    scaleMode: PvScaleMode.ScaleToFit);
             }
             else if (sizeType == IconSizeType.Large && rule.largeIcon.sprite != null)
             {
-                PvCustomizerGUI.DrawSprite(iconRect, rule.largeIcon.sprite, tint: tint, scaleMode: PvScaleMode.ScaleToFit);
+                PvCustomizerGUI.DrawSprite(iconRect, rule.largeIcon.sprite, tint: tint,
+                    scaleMode: PvScaleMode.ScaleToFit);
             }
 
+            #endregion
+
+            #region Text Drawing
+
+            Rect textRect = PvCustomizerUtility.ItemRectToTextRect(selectionRect);
+            textRect.height++;
+            PvCustomizerGUI.DrawBackground(textRect);
             if (rule.textBackground.sprite != null)
             {
-                Rect textRect = PvCustomizerUtility.ItemRectToTextRect(selectionRect);
-                textRect.height++;
-                PvCustomizerGUI.DrawBackground(textRect);
-                PvCustomizerGUI.DrawSprite(textRect, rule.textBackground.sprite, tint: tint, scaleMode:PvScaleMode.StretchToFill);
-                using (new TempFontSize(10))
-                {
-                    PvCustomizerGUI.DrawTextDirect(textRect, name,
-                        textAnchor: sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView
-                            ? PvAnchor.MiddleLeft
-                            : PvAnchor.MiddleCenter,
-                        color: rule.textColor);
-                }
+                PvCustomizerGUI.DrawSprite(textRect, rule.textBackground.sprite, tint: tint,
+                    scaleMode: PvScaleMode.StretchToFill);
             }
+
+            using (new TempFontSize(10))
+            {
+                PvCustomizerGUI.DrawTextDirect(textRect, name,
+                    textAnchor: sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView
+                        ? PvAnchor.MiddleLeft
+                        : PvAnchor.MiddleCenter,
+                    color: rule.textColor);
+            }
+
+            #endregion
         }
 
         #endregion
