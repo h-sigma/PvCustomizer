@@ -143,22 +143,19 @@ namespace Akaal.Editor
             IconSizeType sizeType = PvCustomizerUtility.GetSizeType(selectionRect);
             Rect iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, sizeType == IconSizeType.TreeView);
             Color tint = selected ? (Color) PvCustomizerGUI.ICON_SELECTED_TINT : Color.white;
-
-            if (rule.eraseDefaultFolder)
-            {
-                PvCustomizerGUI.DrawBackground(iconRect);
-            }
-
+            
             #region Icon Drawing
 
             if (sizeType == IconSizeType.Small || sizeType == IconSizeType.TreeView && rule.smallIcon.sprite != null)
             {
+                TryDrawIconBackground();
                 iconRect = PvCustomizerUtility.ItemRectToIconRect(selectionRect, true);
                 PvCustomizerGUI.DrawSprite(iconRect, rule.smallIcon.sprite, tint: tint,
                     scaleMode: PvScaleMode.ScaleToFit);
             }
             else if (sizeType == IconSizeType.Large && rule.largeIcon.sprite != null)
             {
+                TryDrawIconBackground();
                 PvCustomizerGUI.DrawSprite(iconRect, rule.largeIcon.sprite, tint: tint,
                     scaleMode: PvScaleMode.ScaleToFit);
             }
@@ -186,6 +183,14 @@ namespace Akaal.Editor
             }
 
             #endregion
+
+            void TryDrawIconBackground()
+            {
+                if (rule.eraseDefaultFolder)
+                {
+                    PvCustomizerGUI.DrawBackground(iconRect);
+                }
+            }
         }
 
         #endregion
