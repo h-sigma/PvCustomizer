@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Akaal.Editor.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,12 +13,16 @@ namespace Akaal.Editor
 
         public const string PackageName = "com.akaal.pvcustomizer";
 
-        public const  string k_MyCustomSettingsPath = ResourcesFolder + "PvCustomizerSettings.asset";
+        private const string AssetFileName = "PvCustomizerSettings.asset";
         private const string ResourcesFolder        = "Assets/Plugins/PvCustomizer/Editor/Resources/";
+        public const  string k_MyCustomSettingsPath = ResourcesFolder + AssetFileName;
 
         #endregion
 
         #region Serializable
+
+        [SerializeField, PvIcon, HideInInspector]
+        private Sprite assetIcon;
 
         [SerializeField]
         private float tintAmount = 0.5f;
@@ -89,6 +94,8 @@ namespace Akaal.Editor
                 if (_settings == null)
                 {
                     _settings = CreateInstance<PvCustomizerSettings>();
+                    _settings.assetIcon = Resource.Load<Sprite>("Icons/logo_small.png");
+                    LoadDefaultRules(_settings);
                     if (!Directory.Exists(ResourcesFolder)) Directory.CreateDirectory(ResourcesFolder);
                     AssetDatabase.CreateAsset(_settings, k_MyCustomSettingsPath);
                     AssetDatabase.SaveAssets();
@@ -96,6 +103,11 @@ namespace Akaal.Editor
             }
 
             return _settings;
+        }
+
+        private static void LoadDefaultRules(PvCustomizerSettings settings)
+        {
+            //todo
         }
 
         internal static SerializedObject GetSerializedSettings()
