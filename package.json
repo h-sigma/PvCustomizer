@@ -2,7 +2,7 @@
   "name": "com.akaal.pvcustomizer",
   "displayName": "PvCustomizer",
   "description": "PvCustomizer lets you customize the Unity Project View with custom folder and asset icons, adding flavor and QoL.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "unity": "2018.1",
   "license": "MIT",
   "repository": {
