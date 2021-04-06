@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - String expression conditions for displaying of asset icons.
 - Various SDF shapes for icons.
 
+## [0.0.6] - 2021-04-08
+### Fixes
+- Fixed namespace names.
+
 ## [0.0.5] - 2021-02-10
 ### Fixes
 - Selecting folder icon label color now works when label background image is not selected.
